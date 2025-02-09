@@ -30,7 +30,7 @@
             <div class="col-md-4">
                 <div class="withdraw status">
                     <h5>Withdraw</h5>
-                    <h2>$00</h2>
+                    <h2>$ <span id="currentwithdraw">00</span></h2>
                 </div>
             </div>
             <div class="col-md-4">
@@ -91,11 +91,16 @@
         })
 
         //Withdraw Button Handler
-        const  WithdrawBtn = document.getElementById("addwithdraw");
+        const  WithdrawBtn = document.getElementById("addWithdraw");
         WithdrawBtn.addEventListener("click", function(){
             //const Withdrawamount = document.getElementById("withdrawAmount").value;
             //const Withdrawnumber= parseFloat(Withdrawamount);
-            const Withdrawnumber= GetInputNumber("withdrawAmount");
+            const Withdrawnumber= GetInputNumber("withdrawamount");
+
+            updatetext("currentwithdraw", Withdrawnumber);
+            updatetext("CurrentBalance", -1* Withdrawnumber);
+
+            document.getElementById("withdrawamount").value="";
         })
 
         function GetInputNumber(id){
